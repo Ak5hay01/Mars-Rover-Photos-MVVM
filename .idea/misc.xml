@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/KOTLIN/NasaMarsRoverMVVM/app/src/main/res/drawable/ic_camera_placeholder.xml" value="0.1845" />
+        <entry key="..\:/KOTLIN/NasaMarsRoverMVVM/app/src/main/res/drawable/rounded_rect.xml" value="0.1845" />
+        <entry key="..\:/KOTLIN/NasaMarsRoverMVVM/app/src/main/res/layout/activity_main.xml" value="0.17604166666666668" />
+        <entry key="..\:/KOTLIN/NasaMarsRoverMVVM/app/src/main/res/layout/activity_splash.xml" value="0.17604166666666668" />
+        <entry key="..\:/KOTLIN/NasaMarsRoverMVVM/app/src/main/res/layout/fragment_details.xml" value="0.16197916666666667" />
+        <entry key="..\:/KOTLIN/NasaMarsRoverMVVM/app/src/main/res/layout/fragment_home.xml" value="0.17604166666666668" />
+        <entry key="..\:/KOTLIN/NasaMarsRoverMVVM/app/src/main/res/layout/rover_single_row.xml" value="0.17604166666666668" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
