@@ -8,9 +8,9 @@
 
     <ImageView
         android:id="@+id/splash_mars_rover_img"
-        android:layout_width="108dp"
-        android:layout_height="108dp"
-        android:src="@drawable/ic_mars_rover"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:src="@drawable/mars_rover"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

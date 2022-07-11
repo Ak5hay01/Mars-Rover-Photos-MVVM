@@ -1,34 +1,25 @@
-plugins {
-    id 'com.android.application'
-    id 'org.jetbrains.kotlin.android'
-    id 'kotlin-kapt'
-    id 'kotlin-parcelize'
-    id 'androidx.navigation.safeargs.kotlin'
-}
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: "androidx.navigation.safeargs.kotlin"
 
 def apikeyPropertiesFile = rootProject.file("apikey.properties")
 def apikeyProperties = new Properties()
 apikeyProperties.load(new FileInputStream(apikeyPropertiesFile))
 
 android {
-    compileSdk 31
-
+    compileSdkVersion 29
+    buildToolsVersion "29.0.2"
     defaultConfig {
-        applicationId "com.akshayteli.nasamarsrover_mvvm"
-        minSdk 23
-        targetSdk 31
+        applicationId "co.akshayteli.nasaroverphotos"
+        minSdkVersion 21
+        targetSdkVersion 29
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField "String", "BASE_URL", "\"https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/\""
         buildConfigField "String", "API_KEY", apikeyProperties['apiKey']
-    }
-    dataBinding {
-        enabled = true
-    }
-    viewBinding {
-        enabled = true
     }
     buildTypes {
         release {
@@ -36,29 +27,37 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+    dataBinding {
+        enabled = true
+    }
+    viewBinding {
+        enabled = true
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = JavaVersion.VERSION_1_8
     }
 }
 
 dependencies {
-
-    implementation 'androidx.core:core-ktx:1.7.0'
-    implementation 'androidx.appcompat:appcompat:1.4.2'
-    implementation 'com.google.android.material:material:1.6.1'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.core:core-ktx:1.2.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
-    def nav_version_ktx = "2.5.0"
+    def nav_version_ktx = "2.3.0-alpha01"
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version_ktx"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version_ktx"
+
+    def material_version = "1.1.0"
+    implementation "com.google.android.material:material:$material_version"
+
+    def fragment_version = "1.2.4"
+    implementation "androidx.fragment:fragment-ktx:$fragment_version"
+
+    def cardview_version = "1.0.0"
+    implementation "androidx.cardview:cardview:$cardview_version"
 
     def glide_version = "4.9.0"
     implementation "com.github.bumptech.glide:glide:$glide_version"
@@ -76,4 +75,20 @@ dependencies {
     def view_model_live_data_version = "2.2.0"
     implementation "androidx.lifecycle:lifecycle-extensions:$view_model_live_data_version"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$view_model_live_data_version"
+
+    //tests dependencies
+    testImplementation 'junit:junit:4.12'
+    def junitExtVersion = "1.1.1"
+    androidTestImplementation "androidx.test.ext:junit:$junitExtVersion"
+    androidTestImplementation "androidx.test.ext:junit-ktx:$junitExtVersion"
+    def espressoVersion = "3.2.0"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-contrib:$espressoVersion"
+    implementation "androidx.test.espresso:espresso-idling-resource:$espressoVersion"
+    def testCoreKtx = "1.2.0"
+    androidTestImplementation "androidx.test:core-ktx:$testCoreKtx"
+    def testRulesVersion = "1.2.0"
+    androidTestImplementation "androidx.test:rules:$testRulesVersion"
+    def fragmentVersion = "1.2.4"
+    debugImplementation "androidx.fragment:fragment-testing:$fragmentVersion"
 }
