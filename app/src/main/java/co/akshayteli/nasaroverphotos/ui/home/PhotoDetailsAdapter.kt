@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import co.akshayteli.nasaroverphotos.R
 import co.akshayteli.nasaroverphotos.data.model.Photo
@@ -37,9 +38,8 @@ class PhotoDetailsAdapter(private val photosList: ArrayList<Photo>) :
             binding.rowPhotoRoverImg.setImageFromUrlWithProgressBar(photo.imgSrc,
                 binding.rowPhotoRoverProgress)
             binding.root.setOnClickListener { view ->
-                val bundle = bundleOf("PHO_ARG" to photo)
-                view.findNavController().navigate(R.id.action_home_to_details, bundle)
-
+               val directions = HomeFragmentDirections.actionHomeToDetails(photo)
+                view.findNavController().navigate(directions)
             }
         }
     }

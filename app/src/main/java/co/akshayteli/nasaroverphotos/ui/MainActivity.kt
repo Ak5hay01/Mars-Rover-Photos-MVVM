@@ -3,13 +3,15 @@ package co.akshayteli.nasaroverphotos.ui
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.Observer
 import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
 import co.akshayteli.nasaroverphotos.R
 import co.akshayteli.nasaroverphotos.databinding.ActivityMainBinding
-import co.akshayteli.nasaroverphotos.utils.extensions.setupWithNavController
 import com.google.android.material.appbar.MaterialToolbar
+
 
 
 class MainActivity : AppCompatActivity() {
@@ -38,18 +40,16 @@ class MainActivity : AppCompatActivity() {
      * Called on first creation and when restoring state.
      */
     private fun setBottomNavigationBar() {
-        val bottomNavigationView = binding.bottomNav
-        val navGraphIds = listOf(R.navigation.nav_graph_home)
 
-        val controller = bottomNavigationView.setupWithNavController(navGraphIds = navGraphIds,
-            fragmentManager = supportFragmentManager,
-            containerId = R.id.nav_host_fragment,
-            intent = intent)
+        val bottomNavigation = binding.bottomNav
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        val navController = navHostFragment.navController
 
-        controller.observe(this, Observer { navController ->
-            setupActionBarWithNavController(navController)
-        })
-        currentNavController = controller
+        val appBarConfiguration = AppBarConfiguration(setOf(R.id.home_dest))
+
+        setupActionBarWithNavController(navController,appBarConfiguration)
+
+        bottomNavigation.setupWithNavController(navController)
     }
 
     override fun onSupportNavigateUp(): Boolean {

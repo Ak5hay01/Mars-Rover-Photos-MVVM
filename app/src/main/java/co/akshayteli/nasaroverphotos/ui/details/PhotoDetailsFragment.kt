@@ -26,7 +26,7 @@ class PhotoDetailsFragment : Fragment() {
 
     // Get information for the selected Item
     private fun loadSentDataArguments() {
-        arguments?.getParcelable<Photo>("PHO_ARG")?.let {
+        arguments?.getParcelable<Photo>("photo")?.let {
             photo = it
         }
     }
